@@ -19,7 +19,6 @@ DEFINES += QTCREATOR_UTILS_LIB
 HEADERS += utils_global.h \
     reloadpromptutils.h \
     settingsutils.h \
-    filesearch.h \
     listutils.h \
     pathchooser.h \
     pathlisteditor.h \
@@ -86,7 +85,6 @@ SOURCES += consoleprocess_unix.cpp
 
 SOURCES += reloadpromptutils.cpp \
     settingsutils.cpp \
-    filesearch.cpp \
     pathchooser.cpp \
     pathlisteditor.cpp \
     filewizardpage.cpp \

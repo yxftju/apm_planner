@@ -32,7 +32,6 @@
 //#include "../internals/point.h"
 #include "../core/diagnostics.h"
 #include "configuration.h"
-#include <QtGui>
 #include <QTransform>
 #include <QWidget>
 #include <QBrush>

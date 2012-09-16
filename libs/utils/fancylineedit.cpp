@@ -28,13 +28,13 @@
 
 #include "fancylineedit.h"
 
-#include <QtCore/QEvent>
-#include <QtCore/QDebug>
-#include <QtCore/QString>
-#include <QtGui/QApplication>
-#include <QtGui/QMenu>
-#include <QtGui/QMouseEvent>
-#include <QtGui/QLabel>
+#include <QEvent>
+#include <QDebug>
+#include <QString>
+#include <QApplication>
+#include <QMenu>
+#include <QMouseEvent>
+#include <QLabel>
 
 enum { margin = 6 };
 

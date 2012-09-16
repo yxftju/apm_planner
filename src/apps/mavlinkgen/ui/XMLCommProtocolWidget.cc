@@ -37,7 +37,7 @@ void XMLCommProtocolWidget::selectXMLFile()
     QFileDialog dialog;
     dialog.setDirectory(dir.absoluteDir());
     dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setFilter(tr("MAVLink XML (*.xml)"));
+    //dialog.setFilter(tr("MAVLink XML (*.xml)"));
     dialog.setViewMode(QFileDialog::Detail);
     QStringList fileNames;
     if (dialog.exec())

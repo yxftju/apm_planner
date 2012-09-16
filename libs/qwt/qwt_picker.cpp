@@ -190,7 +190,7 @@ void QwtPicker::PickerWidget::updateMask()
     w->setUpdatesEnabled(doUpdate);
 #endif
 
-    setShown(!mask.isEmpty());
+    //setShown(!mask.isEmpty());
 }
 
 void QwtPicker::PickerWidget::paintEvent(QPaintEvent *e)

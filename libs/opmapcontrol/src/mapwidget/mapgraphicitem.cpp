@@ -30,6 +30,9 @@
 #include "mapgraphicitem.h"
 #include "waypointlineitem.h"
 
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
+
 namespace mapcontrol
 {
     MapGraphicItem::MapGraphicItem(internals::Core *core, Configuration *configuration):core(core),

@@ -25,13 +25,13 @@ QT += network \
     opengl \
     svg \
     xml \
-    phonon \
+    multimedia \
     webkit \
     sql
 
 TEMPLATE = app
 TARGET = qgroundcontrol
-BASEDIR = $${IN_PWD}
+BASEDIR = $${PWD}
 linux-g++|linux-g++-64{
     debug {
         TARGETDIR = $${OUT_PWD}/debug

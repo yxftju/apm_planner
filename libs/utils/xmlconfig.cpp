@@ -38,7 +38,7 @@
 #include <QRect>
 #include <QSize>
 #include <QPoint>
-#include <QtCore/QUrl>
+#include <QUrl>
 
 #define NUM_PREFIX "arr_"
 

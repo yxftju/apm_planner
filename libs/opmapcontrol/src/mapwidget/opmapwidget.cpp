@@ -26,7 +26,7 @@
 */
 
 #include "opmapwidget.h"
-#include <QtGui>
+#include <QResizeEvent>
 #include <QMetaObject>
 #include "waypointitem.h"
 
