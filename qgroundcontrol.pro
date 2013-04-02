@@ -25,7 +25,6 @@ QT += network \
     opengl \
     svg \
     xml \
-    phonon \
     webkit \
     sql
 
@@ -135,7 +134,54 @@ include(src/apps/mavlinkgen/mavlinkgen.pri)
 
 
 # Include QWT plotting library
-include(libs/qwt/qwt.pri)
+#include(libs/qwt/qwt.pri)
+
+QWT_ROOT = $${PWD}/libs/qwt
+include( $${QWT_ROOT}/qwtconfig.pri )
+include( $${QWT_ROOT}/qwtbuild.pri )
+include( $${QWT_ROOT}/qwtfunctions.pri )
+
+TEMPLATE     = app
+
+INCLUDEPATH += $${QWT_ROOT}/src
+DEPENDPATH  += $${QWT_ROOT}/src
+DESTDIR      = $${QWT_ROOT}/examples/bin
+
+QMAKE_RPATHDIR *= $${QWT_ROOT}/lib
+
+contains(QWT_CONFIG, QwtFramework) {
+
+    LIBS      += -F$${QWT_ROOT}/lib
+}
+else {
+
+    LIBS      += -L$${QWT_ROOT}/lib
+}
+
+qwtAddLibrary(qwt)
+
+greaterThan(QT_MAJOR_VERSION, 4) {
+
+    QT += printsupport
+}
+
+contains(QWT_CONFIG, QwtSvg) {
+
+    QT += svg
+}
+else {
+
+    DEFINES += QWT_NO_SVG
+}
+
+
+win32 {
+    contains(QWT_CONFIG, QwtDll) {
+        DEFINES    += QT_DLL QWT_DLL
+    }
+}
+
+
 DEPENDPATH += . \
     plugins \
     libs/thirdParty/qserialport/include \

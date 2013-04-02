@@ -27,6 +27,7 @@
 #include "pureimagecache.h"
 #include <QDateTime>
 #include <QSettings>
+#include <QLinkedList>
 //#define DEBUG_PUREIMAGECACHE
 namespace core {
     qlonglong PureImageCache::ConnCounter=0;
@@ -279,9 +280,10 @@ namespace core {
                             if(QDateTime::fromString(query.value(5).toString()).daysTo(QDateTime::currentDateTime())>days)
                                 add.append(query.value(0).toLongLong());
                         }
-                        foreach(long i,add)
+
+                        for (int k = 0; k < add.count(); k++)
                         {
-                            query.exec(QString("DELETE FROM Tiles WHERE id = %1;").arg(i));
+                            query.exec(QString("DELETE FROM Tiles WHERE id = %1;").arg(add.at(k)));
                         }
                     }
 
@@ -327,11 +329,10 @@ namespace core {
                     }
 
                 }
-                long f;
-                foreach(f,add)
+                for (int f = 0; f < add.count(); f++)
                 {
-                    queryb.exec(QString("INSERT INTO Tiles(X, Y, Zoom, Type, Date) SELECT X, Y, Zoom, Type, Date FROM Source.Tiles WHERE id=%1").arg(f));
-                    queryb.exec(QString("INSERT INTO TilesData(id, Tile) Values((SELECT last_insert_rowid()), (SELECT Tile FROM Source.TilesData WHERE id=%1))").arg(f));
+                    queryb.exec(QString("INSERT INTO Tiles(X, Y, Zoom, Type, Date) SELECT X, Y, Zoom, Type, Date FROM Source.Tiles WHERE id=%1").arg(add.at(f)));
+                    queryb.exec(QString("INSERT INTO TilesData(id, Tile) Values((SELECT last_insert_rowid()), (SELECT Tile FROM Source.TilesData WHERE id=%1))").arg(add.at(f)));
                 }
                 add.clear();
                 ca.close();

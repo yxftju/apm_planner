@@ -193,7 +193,8 @@ namespace internals {
         bool isStarted(){return started;}
 
         diagnostics GetDiagnostics();
-    signals:
+
+signals:
         void OnCurrentPositionChanged(internals::PointLatLng point);
         void OnTileLoadComplete();
         void OnTilesStillToLoad(int number);

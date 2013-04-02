@@ -95,7 +95,7 @@ void MAVLinkProtocol::loadSettings()
     }
     else if (m_logfile == NULL)
     {
-        m_logfile = new QFile(QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + "/qgroundcontrol_packetlog.mavlink");
+        m_logfile = new QFile(QStandardPaths::standardLocations(QStandardPaths::HomeLocation) + "/qgroundcontrol_packetlog.mavlink");
     }
     // Enable logging
     enableLogging(settings.value("LOGGING_ENABLED", m_loggingEnabled).toBool());
@@ -170,7 +170,7 @@ QString MAVLinkProtocol::getLogfileName()
     }
     else
     {
-        return QDesktopServices::storageLocation(QDesktopServices::HomeLocation) + "/qgroundcontrol_packetlog.mavlink";
+        return QStandardPaths::standardLocations(QStandardPaths::HomeLocation) + "/qgroundcontrol_packetlog.mavlink";
     }
 }
 

@@ -1424,7 +1424,7 @@ void HUD::startImage(quint64 timestamp)
 
 void HUD::selectOfflineDirectory()
 {
-    QString fileName = QFileDialog::getExistingDirectory(this, tr("Select image directory"), QDesktopServices::storageLocation(QDesktopServices::DesktopLocation));
+    QString fileName = QFileDialog::getExistingDirectory(this, tr("Select image directory"), QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first());
     if (fileName != "") {
         offlineDirectory = fileName;
     }
@@ -1507,7 +1507,7 @@ void HUD::saveImages(bool save)
         QFileDialog dialog(this);
         dialog.setFileMode(QFileDialog::DirectoryOnly);
 
-        imageLogDirectory = QFileDialog::getExistingDirectory(this, tr("Select image log directory"), QDesktopServices::storageLocation(QDesktopServices::DesktopLocation));
+        imageLogDirectory = QFileDialog::getExistingDirectory(this, tr("Select image log directory"), QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first());
 
         qDebug() << "Logging to:" << imageLogDirectory;
 

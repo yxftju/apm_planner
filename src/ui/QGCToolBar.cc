@@ -192,7 +192,7 @@ void QGCToolBar::logging(bool checked)
     if (checked)
     {
 		// Prompt the user for a filename/location to save to
-        QString fileName = QFileDialog::getSaveFileName(this, tr("Specify MAVLink log file to save to"), QDesktopServices::storageLocation(QDesktopServices::DesktopLocation), tr("MAVLink Logfile (*.mavlink *.log *.bin);;"));
+        QString fileName = QFileDialog::getSaveFileName(this, tr("Specify MAVLink log file to save to"), QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first(), tr("MAVLink Logfile (*.mavlink *.log *.bin);;"));
 
 		// Check that they didn't cancel out
 		if (fileName.isNull())

@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QDesktopServices>
+#include <QStandardPaths>
 
 #include "XMLCommProtocolWidget.h"
 #include "ui_XMLCommProtocolWidget.h"
@@ -37,7 +38,7 @@ void XMLCommProtocolWidget::selectXMLFile()
     QFileDialog dialog;
     dialog.setDirectory(dir.absoluteDir());
     dialog.setFileMode(QFileDialog::AnyFile);
-    dialog.setFilter(tr("MAVLink XML (*.xml)"));
+    //dialog.setFilter(tr("MAVLink XML (*.xml)"));
     dialog.setViewMode(QFileDialog::Detail);
     QStringList fileNames;
     if (dialog.exec())
@@ -86,7 +87,7 @@ void XMLCommProtocolWidget::selectOutputDirectory()
 {
     QSettings settings("MAVLink Consortium", "MAVLink Generator");
     const QString mavlinkOutputDir = "MAVLINK_OUTPUT_DIR";
-    QString dirPath = settings.value(mavlinkOutputDir, QDesktopServices::DesktopLocation).toString();
+    QString dirPath = settings.value(mavlinkOutputDir, QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first()).toString();
     QFileDialog dialog;
     dialog.setDirectory(dirPath);
     dialog.setFileMode(QFileDialog::Directory);

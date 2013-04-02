@@ -34,6 +34,8 @@
 #include "../core/diagnostics.h"
 #include "configuration.h"
 #include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QtOpenGL/QGLWidget>
 #include "waypointitem.h"
 #include "QtSvg/QGraphicsSvgItem"

@@ -114,7 +114,7 @@ void QGCDataPlot2D::savePlot()
 {
     QString fileName = "plot.svg";
     fileName = QFileDialog::getSaveFileName(
-                   this, "Export File Name", QDesktopServices::storageLocation(QDesktopServices::DesktopLocation),
+                   this, "Export File Name", QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first(),
                    "PDF Documents (*.pdf);;SVG Images (*.svg)");
 
     if (!fileName.contains(".")) {
@@ -132,7 +132,7 @@ void QGCDataPlot2D::savePlot()
         // Abort if cancelled
         if(msgBox.exec() == QMessageBox::Cancel) return;
         fileName = QFileDialog::getSaveFileName(
-                       this, "Export File Name", QDesktopServices::storageLocation(QDesktopServices::DesktopLocation),
+                       this, "Export File Name", QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first(),
                        "PDF Documents (*.pdf);;SVG Images (*.svg)");
     }
 
@@ -683,7 +683,7 @@ void QGCDataPlot2D::saveCsvLog()
 {
     QString fileName = "export.csv";
     fileName = QFileDialog::getSaveFileName(
-                   this, "Export CSV File Name", QDesktopServices::storageLocation(QDesktopServices::DesktopLocation),
+                   this, "Export CSV File Name", QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first(),
                    "CSV file (*.csv);;Text file (*.txt)");
 
     if (!fileName.contains(".")) {
@@ -707,7 +707,7 @@ void QGCDataPlot2D::saveCsvLog()
     //        msgBox.setDefaultButton(QMessageBox::Ok);
     //        if(msgBox.exec() == QMessageBox::Cancel) break;
     //        fileName = QFileDialog::getSaveFileName(
-    //                this, "Export CSV File Name", QDesktopServices::storageLocation(QDesktopServices::DesktopLocation),
+    //                this, "Export CSV File Name", QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first(),
     //            "CSV file (*.csv);;Text file (*.txt)");
     //    }
 

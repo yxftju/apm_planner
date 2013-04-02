@@ -79,7 +79,7 @@ void
 ImageryParamDialog::selectPath(void)
 {
     QString filename = QFileDialog::getExistingDirectory(this, "Imagery path",
-                                                         QDesktopServices::storageLocation(QDesktopServices::DesktopLocation));
+                                                         QStandardPaths::standardLocations(QStandardPaths::DesktopLocation).first());
     if (filename.isNull())
     {
         return;

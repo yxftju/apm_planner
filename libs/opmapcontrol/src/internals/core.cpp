@@ -25,6 +25,7 @@
 * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 #include "core.h"
+#include <QObject>
 
 #ifdef DEBUG_CORE
 qlonglong internals::Core::debugcounter=0;
