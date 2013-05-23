@@ -344,8 +344,9 @@ QString MainWindow::getWindowStateKey()
         return QString::number(currentView)+"_windowstate_" + UASManager::instance()->getActiveUAS()->getAutopilotTypeName();
     }
     else
-
+    {
         return QString::number(currentView)+"_windowstate";
+    }
 }
 
 QString MainWindow::getWindowGeometryKey()
@@ -726,7 +727,12 @@ void MainWindow::loadDockWidget(QString name)
     {
         return;
     }
-    if (name == "UNMANNED_SYSTEM_CONTROL_DOCKWIDGET")
+    if (name.startsWith("HIL_CONFIG"))
+    {
+        //It's a HIL widget.
+        showHILConfigurationWidget(UASManager::instance()->getActiveUAS());
+    }
+    else if (name == "UNMANNED_SYSTEM_CONTROL_DOCKWIDGET")
     {
         createDockWidget(centerStack->currentWidget(),new UASControlWidget(this),tr("Control"),"UNMANNED_SYSTEM_CONTROL_DOCKWIDGET",currentView,Qt::LeftDockWidgetArea);
     }
@@ -904,8 +910,8 @@ void MainWindow::showHILConfigurationWidget(UASInterface* uas)
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (isVisible()) storeViewState();
-    storeSettings();
     aboutToCloseFlag = true;
+    storeSettings();
     mavlink->storeSettings();
     UASManager::instance()->storeSettings();
     QMainWindow::closeEvent(event);
@@ -1745,8 +1751,9 @@ void MainWindow::UASCreated(UASInterface* uas)
 
     connect(uas, SIGNAL(systemSpecsChanged(int)), this, SLOT(UASSpecsChanged(int)));
 
-    // HIL
-    showHILConfigurationWidget(uas);
+        // HIL
+        //We only want to show it when it's explicitly requested. This is now handled by loadViewState()
+        //showHILConfigurationWidget(uas);
 
     if (!linechartWidget)
     {
