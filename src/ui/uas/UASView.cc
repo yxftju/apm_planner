@@ -119,7 +119,7 @@ UASView::UASView(UASInterface* uas, QWidget *parent) :
     connect(removeAction, SIGNAL(triggered()), this, SLOT(deleteLater()));
     connect(renameAction, SIGNAL(triggered()), this, SLOT(rename()));
     connect(selectAction, SIGNAL(triggered()), uas, SLOT(setSelected()));
-    connect(hilAction, SIGNAL(triggered(bool)), this, SLOT(showHILUi()));
+    connect(hilAction, SIGNAL(triggered(bool)), this, SLOT(showHILUi(bool)));
     connect(selectAirframeAction, SIGNAL(triggered()), this, SLOT(selectAirframe()));
     connect(setBatterySpecsAction, SIGNAL(triggered()), this, SLOT(setBatterySpecs()));
     connect(uas, SIGNAL(systemRemoved()), this, SLOT(deleteLater()));
@@ -564,9 +564,16 @@ void UASView::selectAirframe()
     }
 }
 
-void UASView::showHILUi()
+void UASView::showHILUi(bool enabled)
 {
+    if (enabled)
+    {
      MainWindow::instance()->showHILConfigurationWidget(uas);
+    }
+    else
+    {
+     MainWindow::instance()->hideHILConfigurationWidget(uas);
+    }
 }
 
 void UASView::refresh()

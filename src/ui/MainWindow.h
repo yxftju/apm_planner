@@ -223,6 +223,9 @@ public slots:
     /** @brief Loads and shows the HIL Configuration Widget for the given UAS*/
     void showHILConfigurationWidget(UASInterface *uas);
 
+    /** @brief Hides the HIL Configuration Widget on the current view */
+    void hideHILConfigurationWidget(UASInterface* uas);
+
     void closeEvent(QCloseEvent* event);
 
     /** @brief Load data view, allowing to plot flight data */
